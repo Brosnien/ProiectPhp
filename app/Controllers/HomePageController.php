@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Quiz;
 use Framework\BaseController;
 
+
 class HomePageController extends BaseController
 {
     public function homepageGet()
@@ -37,21 +38,9 @@ class HomePageController extends BaseController
             unset($_SESSION["quiz_id"]);
         }
         
-        $username = $_POST["username"];
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $phone = $_POST["phone"];
-        $email = $_POST["email"];
-        $score = $_COOKIE["score"];
-        $_SESSION["Errors"] = $score;
+        $userModel = new User();
         
-
-        if ($this->isNameValid($firstname) && $this->isNameValid($lastname)&& $this->isNameValid($username)) {
-            $userModel = new User();
-            $userModel->updateUser($username,$firstname, $lastname, $phone.$email, $score);
-            $_SESSION["Errors"] = false;
         
-        }
         $quiz_type = new Quiz();
         $result = $quiz_type->getAll();
         $count = 0;

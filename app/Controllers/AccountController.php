@@ -20,7 +20,7 @@ class AccountController extends BaseController
             $_SESSION["email"] = $result->email;
             header("Location: /show");
         } else {
-            $_SESSION["Errors"] = "Invalid Credentials";
+            $_SESSION["Errors"] = "Date introduse gresit / Lipsa Cont";
             header("Location: /login");
         }
     }
@@ -59,13 +59,13 @@ class AccountController extends BaseController
         if ($user->emailExists($email) == false) {
             return false;
         }
-        $_SESSION["Errors"] .= "Email already exists";
+        $_SESSION["Errors"] .= "Emailul exista";
         return true;
     }
     public function isNameValid($username): bool
     {
         if (!isset($username) || strlen($username) < 2) {
-            $_SESSION["Errors"] .= "Names cant have less than 2 characters";
+            $_SESSION["Errors"] .= "Numele nu pot avea mai putin de 2 caractere";
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ class AccountController extends BaseController
     private function isEmailValid($email): bool
     {
         if (!isset($email) || strlen($email) < 255 || strpos('@', $email)) {
-            $_SESSION["Errors"] .= "invalid email";
+            $_SESSION["Errors"] .= "Email Invalid";
             return false;
         }
         return true;
@@ -82,7 +82,7 @@ class AccountController extends BaseController
     public function isPasswordValid($password): bool
     {
         if (!isset($password) || strlen($password) < 6) {
-            $_SESSION["Errors"] = "Invalid password";
+            $_SESSION["Errors"] = "Parola Invalida";
             return false;
         }
         return true;

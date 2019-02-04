@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Quiz</title>
-    <!-- jquery for maximum compatibility -->
    
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
@@ -27,40 +27,40 @@
             "explanation"   :   "Albert Einstein a descoperit teoria in 1905.",
         },
         {
-            "question"      :   "Q2: Who is on the two dollar bill?",
-            "image"         :   "http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/US_%242_obverse-high.jpg/320px-US_%242_obverse-high.jpg",
+            "question"      :   "Intrebarea 2: Cine se afla pe bancnota de un leu?",
+            "image"         :   "https://upload.wikimedia.org/wikipedia/commons/b/b4/1_leu._Romania%2C_2005_a.jpg",
             "choices"       :   [
-                                    "Thomas Jefferson",
-                                    "Dwight D. Eisenhower",
-                                    "Benjamin Franklin",
-                                    "Abraham Lincoln"
+                                    "Nicolae Iorga",
+                                    "Mihai Eminescu",
+                                    "Aurel Vlaicu",
+                                    "George Enescu"
                                 ],
-            "correct"       :   "Thomas Jefferson",
-            "explanation"   :   "The two dollar bill is seldom seen in circulation. As a result, some businesses are confused when presented with the note.",
+            "correct"       :   "Nicolae Iorga",
+            "explanation"   :   "Numele persoanei de pe bancnota poate vi gasita pe aceasta fix sub portret",
         },
         {
-            "question"      :   "Q3: What event began on April 12, 1861?",
+            "question"      :   "Intrebarea 3: Ce s-a intamplat pe 1 Decembrie 1918?",
             "image"         :   "",
             "choices"       :   [
-                                    "First manned flight",
-                                    "California became a state",
-                                    "American Civil War began",
-                                    "Declaration of Independence"
+                                    "Intrarea in primul razboi mondial de catre Romania",
+                                    "Mica Unire",
+                                    "Revolutia asupra Comunismului",
+                                    "Marea Unire"
                                 ],
-            "correct"       :   "American Civil War began",
-            "explanation"   :   "South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+            "correct"       :   "Marea Unire",
+            "explanation"   :   "Aceasta a fost data in care Moldova Transilvania si Banatul s-au unit intr-un singur principat",
         },
         {
-        "question"      :   "Q4: What event ended on 9 May 1945?",
+        "question"      :   "Intrebarea 4: Ce eveniment s-a terminat pe 9 Mai 1945?",
             "image"         :   "",
             "choices"       :   [
-                                    "WW1",
-                                    "WW2",
-                                    "American Civil War",
-                                    "Cold War"
+                                    "Primul Razboi Mondial",
+                                    "Al doilea Razboi Mondial",
+                                    "Razboiul Civil American",
+                                    "Razboiul Rece"
                                 ],
-            "correct"       :   "WW2",
-            "explanation"   :   "WW2 ended on this date in Berlin.",
+            "correct"       :   "Al doilea Razboi Mondial",
+            "explanation"   :   "Al doilea Razboi Mondial s-a terminat in Berlin dupa ce Puterile Centrale s-au predat.",
         },
 
     ];
@@ -122,18 +122,18 @@
         function processQuestion(choice){
             if(quiz[currentquestion]['choices'][choice] == quiz[currentquestion]['correct']){
                 $('.choice').eq(choice).css({'background-color':'#50D943'});
-                $('#explanation').html('<strong>Correct!</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
+                $('#explanation').html('<strong>Corect!</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
                 score++;
             } else {
                 $('.choice').eq(choice).css({'background-color':'#D92623'});
-                $('#explanation').html('<strong>Incorrect.</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
+                $('#explanation').html('<strong>Incorect.</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
             }
             currentquestion++;
-            $('#submitbutton').html('NEXT QUESTION &raquo;').on('click', function(){
+            $('#submitbutton').html('Urmatoarea Intrebare &raquo;').on('click', function(){
                 if(currentquestion == quiz.length){
                     endQuiz();
                 } else {
-                    $(this).text('Check Answer').css({'color':'#222'}).off('click');
+                    $(this).text('Verifica Raspuns').css({'color':'#000'}).off('click');
                     nextQuestion();
                 }
             })
@@ -172,7 +172,7 @@
             $('#question').empty();
             $('#choice-block').empty();
             $('#submitbutton').remove();
-            $('#question').text("You got " + score + " out of " + quiz.length + " correct.");
+            $('#question').text("Ai avut " + score + " intrebari din " + quiz.length + " corecte.");
             $(document.createElement('h2')).css({'text-align':'center', 'font-size':'4em'}).text(Math.round(score/quiz.length * 100) + '%').insertAfter('#question');
             document.cookie = "score=" + score;
             // de pasat scor prin php direct in tabel
@@ -193,7 +193,7 @@
             //add pager and questions
             if(typeof quiz !== "undefined" && $.type(quiz) === "array"){
                 //add pager
-                $(document.createElement('p')).addClass('pager').attr('id','pager').text('Question 1 of ' + quiz.length).appendTo('#frame');
+                $(document.createElement('p')).addClass('pager').attr('id','pager').text('Intrebarea 1 din ' + quiz.length).appendTo('#frame');
                 //add first question
                 $(document.createElement('h2')).addClass('question').attr('id', 'question').text(quiz[0]['question']).appendTo('#frame');
                 //add image if present
@@ -209,7 +209,7 @@
                 addChoices(quiz[0]['choices']);
             
                 //add submit button
-                $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Check Answer').css({'font-weight':700,'color':'#222','padding':'30px 0'}).appendTo('#frame');
+                $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Verifica Raspuns').css({'font-weight':700,'color':'#222','padding':'30px 0'}).appendTo('#frame');
             
                 setupButtons();
             }
@@ -219,6 +219,7 @@
     });
     </script>
 
+    <input type="hidden" name="scor" value="<?php echo $score; ?>">
    
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" >
     <a class="nav-link" href="/show">Back<span class="sr-only">(current)</span></a>

@@ -53,38 +53,7 @@ class UserController extends BaseController
             header("Location: /user/edit");
         }
     }
-
-    public function editGET()
-    {
-        $_SESSION["Errors"] = false;
-        if(!$_SESSION["email"])
-        {
-            header("Location: /login");
-            die();
-        }
-        $user = new User();
-        $user = $user->getByEMail($_SESSION["email"]);
-        return $this->view("user/edit.html",["user" => $user]);
-    }
-
-    public function editPOST()
-    {
-        $username = $_POST["username"];
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $phone = $_POST["phone"];
-        $email =    $_SESSION["email"];
-        if ($this->isNameValid($firstname) && $this->isNameValid($lastname)&& $this->isNameValid($username)) {
-            $userModel = new User();
-            $userModel->updateUser($username,$firstname, $lastname, $phone,$email);
-            $_SESSION["Errors"] = false;
-            header("Location: /show");
-        }
-        else
-        {
-            header("Location: /user/edit");
-        }
-    }
+    
 
     public function showGET()
     {
@@ -107,7 +76,7 @@ class UserController extends BaseController
     public function isNameValid($username): bool
     {
         if (!isset($username) || strlen($username) < 2) {
-            $_SESSION["Errors"] .= "Names cant have less than 2 characters";
+            $_SESSION["Errors"] .= "Numele nu pot avea mai putin de 2 caractere";
             return false;
         }
         return true;
