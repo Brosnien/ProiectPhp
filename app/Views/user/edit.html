@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Update Profile</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Food ordering</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/restaurants">Restaurants <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/edit">Edit user</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/show">Show user</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart">Cart</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <li class="nav-item">
+                <a class="btn btn-danger" href="/logout">Logout</a>
+            </li>
+        </form>
+    </div>
+</nav>
+<div class="container">
+    <form action="/edit/post" method="post">
+
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="username">Username</label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="username" required placeholder="username"/>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="firstname">First Name</label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="firstname"/>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="lastname">Last Name</label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="lastname"/>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="phone">Phone</label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="phone"/>
+            </div>
+        </div>
+
+
+        <button class="btn btn-danger" type="submit"> Update profile</button>
+    </form>
+
+    {% if session_errors %}
+    <div class="alert alert-danger">{{session_errors}}</div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

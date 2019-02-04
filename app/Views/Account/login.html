@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Log in </title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" ></head>
+<body>
+
+<div class="container">
+    <h1 > Quiz </h1>
+    <form action="/login/post" method="post">
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="email">Email</label>
+          
+                <input class="form-control" type="email" name="email" required placeholder="Email"/>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="password"> Password</label>
+          
+                <input class="form-control" type="password" name="password" required minlength=6 />
+            </div>
+        </div>
+
+        {% if session_errors %}
+        <div class="alert alert-danger">{{session_errors}}</div>
+        {% endif %}
+
+        <button class="btn btn-primary" type="submit"> Login</button>
+        
+        <a class="btn btn-primary" type="submit" href="/register"> Register</a>
+    </form>
+
+</div>
+</div>
+
+<script src="https://bootswatch.com/4/lux/bootstrap.min.css"></script>
+<script src="https://bootswatch.com/4/lux/bootstrap.min.css"></script>
+</body>
+</html>

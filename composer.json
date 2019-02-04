@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Src/",
+      "App\\": "App/"
+    }
+  },
+  "require": {
+    "twig/twig": "^2.0",
+    "tracy/tracy": "^2.5",
+    "cloudinary/cloudinary_php": "dev-master"
+  }
+}

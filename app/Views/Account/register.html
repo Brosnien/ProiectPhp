@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" >
+
+    <title>Welcome</title>
+</head>
+<body>
+
+<div class="container">
+
+<form action="/register/post" method="post">
+
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="username">Username</label>
+       
+            <input class="form-control" type="text" name="username" required placeholder="Username"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="password">Password</label>
+       
+            <input class="form-control" type="password" name="password" required minlength=6 />
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="password">Repeat Password</label>
+       
+            <input class="form-control" type="password" name="repeatpassword" required minlength=6 />
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="firstname">First Name</label>
+       
+            <input class="form-control" type="text" name="firstname"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="lastname">Last Name</label>
+       
+            <input class="form-control" type="text" name="lastname"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="phone">Phone</label>
+       
+            <input class="form-control" type="text" name="phone"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label for="email">Email</label>
+        
+            <input class="form-control" type="email" name="email" required placeholder="Email"/>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit"> Sign in </button>
+</form>
+    {% if session_errors %}
+    <div class="alert alert-danger">{{session_errors}}</div>
+    {% endif %}
+
+</br>
+<div > If you are already registered please login <a href="login"> here </a> </div>
+</div>
+
+<script src="https://bootswatch.com/4/lux/bootstrap.min.css""></script>
+<script src="https://bootswatch.com/4/lux/bootstrap.min.css""></script>
+</body>
+</html>
